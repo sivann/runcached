@@ -35,8 +35,8 @@ Example:
 1) Run the date command. Produce a new "date" every 5 seconds.
 runcached.py -c 5 date
 
-2) Query multiple parameters of mysql without re-running the query, and making 
-sure all of them correspond to the same time.
+2) Zabbix userparameter which can be called multiple times , but actually executes only once every 20 seconds. 
+Query multiple parameters of mysql at the same time, without re-running the query.
 
 UserParameter=mysql.globalstatus[*],/usr/local/bin/runcached.py -c 20 /usr/bin/mysql -ANe \"show global status\"|egrep '$1\b'|awk '{print $ 2}'
 
