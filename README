@@ -6,14 +6,14 @@ any subsequent calls. Original exit status will also be emulated.
 
 After cacheperiod has expired, command will be re-executed and a new result 
 will be cached. 
-Caching depends on command and arguments executed and the 
+Cache data is tied to the command and arguments executed and the 
 path of the runcached executable. Cache results are stored in /tmp
 
 You can use runcached to run resource-expensive commands multiple times, 
 parsing different parts of its output each time. Those commands will be
 run only once for each cacheperiod. 
 
-Implementation is provided in 3 languages, python, C, BASH.
+Implementation is provided in 3 languages, python, C, BASH. Of course the BASH version is not really suggested but it works.
 
 
 Usage:
@@ -67,4 +67,3 @@ Units: QPS
 Store Value: Delta (Speed per second)
 Show Value: As Is
 ```
-
