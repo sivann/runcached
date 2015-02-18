@@ -48,11 +48,10 @@ UserParameter=mysql.globalstatus[*],/usr/local/bin/runcached.py -c 20 /usr/bin/m
 
 And then define some items like so:
 
-
 ```
 #!nolang
 Item Name                      Item Key
---------------                      --------------
+--------------                  --------------
 MySQL DELETES	 	mysql.globalstatus[Com_delete]
 MySQL INSERTS	 	mysql.globalstatus[Com_insert]
 MySQL UPDATES	 	mysql.globalstatus[Com_update]
@@ -60,4 +59,12 @@ MySQL CREATE TABLE	mysql.globalstatus[Com_create_table]
 MySQL SELECTS	 	mysql.globalstatus[Com_select]
 MySQL Uptime	 	mysql.globalstatus[Uptime]
 MySQL ALTER TABLE	mysql.globalstatus[Com_alter_table]
+
+E.g. for DELETE: 
+Type: Numeric, 
+Data Type: Decimal. 
+Units: QPS
+Store Value: Delta (Speed per second)
+Show Value: As Is
 ```
+
