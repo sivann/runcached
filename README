@@ -45,7 +45,8 @@ And then define some items like so:
 
 ```
 #!nolang
-
+Item Name                      Item Key
+--------------                      --------------
 MySQL DELETES	 	mysql.globalstatus[Com_delete]
 MySQL INSERTS	 	mysql.globalstatus[Com_insert]
 MySQL UPDATES	 	mysql.globalstatus[Com_update]
