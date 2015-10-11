@@ -1,4 +1,4 @@
-# runcached (Run Cached)
+# RunCached
 
 Execute commands while caching their output for subsequent calls. 
 Command output will be cached for <cacheperiod> seconds and "replayed" for 
