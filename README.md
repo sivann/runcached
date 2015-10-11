@@ -33,7 +33,7 @@ runcached.sh  <command to execute with args>
 ## Examples
 
 
-### Example 1:  Run the date command. Produce a new "date" every 5 seconds.
+### Example 1:  Run the date command. Each time it executes prints the same date for 5 seconds.
 runcached.py -c 5 date
 
 ### Example 2: Zabbix userparameter which can be called multiple times , but actually executes only once every 20 seconds. 
