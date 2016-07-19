@@ -16,6 +16,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <math.h>
+#include <time.h>
 
 
 int cacheperiod=27; //seconds
@@ -29,6 +30,7 @@ char pidfile[128];
 char * str2md5str( char[]);
 void cleanup(void);
 int runit(char **,char *,char *,char *,char *);
+int isfile(char *path) ;
 
 int main(int argc, char **argv) {
     int i,j,count;
