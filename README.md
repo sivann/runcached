@@ -1,6 +1,6 @@
 # RunCached
 
-Execute commands while caching their output for subsequent calls. 
+Execute commands while caching (memoizing) their output for subsequent calls. 
 Command output will be cached for <cacheperiod> seconds and "replayed" for 
 any subsequent calls. Original exit status will also be emulated.
 
