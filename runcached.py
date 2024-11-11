@@ -5,7 +5,7 @@
 # Execute commands while caching their output for subsequent calls. 
 # Command output will be cached for $cacheperiod and replayed for subsequent calls
 #
-# Author Spiros Ioannou sivann <at> inaccess.com
+# Author Spiros Ioannou sivann <at> gmail.com
 #
 
 cacheperiod=27 #seconds
@@ -38,7 +38,7 @@ cmd=" ".join(sys.argv[argskip:])
 
 #hash of executed command w/args
 m = hashlib.md5()
-m.update(cmd)
+m.update(cmd.encode('utf-8'))
 cmdmd5=m.hexdigest()
 
 
