@@ -52,8 +52,6 @@ Query multiple parameters of mysql at the same time, without re-running the quer
 
 
 ```
-#!
-
 UserParameter=mysql.globalstatus[*],/usr/local/bin/runcached.py -c 20 /usr/bin/mysql -ANe \"show global status\"|egrep '$1\b'|awk '{print $ 2}'
 ```
 
