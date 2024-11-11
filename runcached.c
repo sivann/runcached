@@ -3,7 +3,7 @@
  * Execute commands while caching their output for subsequent calls.
  * Command output will be cached for $cacheperiod and replayed for subsequent calls
  *
- * Author Spiros Ioannou sivann <at> gmail.com
+ * Author Spiros Ioannou sivann <at> gmail.com 2012
  *
  */
 
@@ -129,15 +129,18 @@ int main(int argc, char **argv) {
         runit(argv,cmd,cmddatafile,cmdexitcode,cmdfile) ;
     }
 
-    fp = fopen(cmddatafile,"r");
+    fp = fopen(cmddatafile,"rb");
     if (!fp) {
         perror(cmddatafile);
         exit(1);
     }
-    while (fgets(buf, sizeof(buf), fp) != NULL)
-        printf("%s", buf);
-    fclose(fp);
+    while (!feof(fp)) {
+        int n;
+        n = fread(buf, sizeof(char), sizeof(buf), fp);
+        fwrite(buf, sizeof(char), n, stdout);
+    }
 
+    fclose(fp);
     exit(0);
 
 } //main
@@ -191,8 +194,16 @@ void runit(char **argv,char * cmd,char * cmddatafile,char * cmdexitcode,char * c
         exit(errno);
     }
 
+    while (!feof(pfp)) {
+        int n;
+        n = fread(buf, sizeof(char), sizeof(buf), pfp);
+        fwrite(buf, sizeof(char), n, stdout);
+    }
+
+    /*
     while (fgets(buf, sizeof(buf), pfp) != NULL)
         printf("%s", buf);
+    */
 
     exitcode=pclose(pfp);
 

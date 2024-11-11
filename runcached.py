@@ -4,12 +4,11 @@
 # runcached
 # Execute commands while caching their output for subsequent calls. 
 # Command output will be cached for $cacheperiod and replayed for subsequent calls
-#
+# 2012
 # Author Spiros Ioannou sivann <at> gmail.com
 #
 
 cacheperiod=27 #seconds
-cachedir="/tmp"
 maxwaitprev=5	#seconds to wait for previous same command to finish before quiting
 minrand=0		#random seconds to wait before running cmd
 maxrand=0
@@ -23,6 +22,7 @@ import hashlib
 import random
 import atexit
 import syslog
+import tempfile
 
 
 argskip=1
@@ -41,6 +41,7 @@ m = hashlib.md5()
 m.update(cmd.encode('utf-8'))
 cmdmd5=m.hexdigest()
 
+cachedir='/tmp'
 
 #random sleep to avoid racing condition of creating the pid on the same time
 if maxrand-minrand > 0:
@@ -117,7 +118,7 @@ diffsec=currtime - lastrun
 if (diffsec > cacheperiod):
 	runit(cmd,cmddatafile,cmdexitcode,cmdfile)
 
-with open(cmddatafile, 'r') as f:
-	sys.stdout.write(f.read())
+with open(cmddatafile, 'rb') as f:
+	sys.stdout.buffer.write(f.read())
 
 cleanup()
