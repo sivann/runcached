@@ -23,13 +23,19 @@ Implementation is not fancy, just works. It is provided in 3 languages, python, 
 ## Usage
 
 ### Python
+```
 runcached.py [-c cacheperiod] <command to execute with args>
+```
 
 ### C
+```
 runcached [-c cacheperiod] <command to execute with args>
+```
 
 ### Bash
+```
 runcached.sh  <command to execute with args>
+```
 
 
 
@@ -37,7 +43,9 @@ runcached.sh  <command to execute with args>
 
 
 ### Example 1:  Run the date command. Each time it executes, it displays the same date for 5 seconds at a time.
+```
 runcached.py -c 5 date
+```
 
 ### Example 2: Zabbix userparameter which can be called multiple times, but in reality executes only once every 20 seconds. 
 Query multiple parameters of mysql at the same time, without re-running the query.
