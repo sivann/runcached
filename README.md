@@ -19,6 +19,8 @@ run only once for each cacheperiod.
 
 Implementation is not fancy, just works. It is provided in 3 languages, python, C, BASH to suit different environments. The BASH version is not really suggested but it works. The python is probably what you want.
 
+## Locking
+It uses pid checking w/timeout instead of locking to prevent simultaneous executions of the same command. This is intentional as several IOT devices have ancient kernels and broken locking and at least this prevents a permanent lockup.
 
 ## Usage
 
