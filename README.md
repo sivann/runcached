@@ -1,10 +1,12 @@
 # RunCached
 
 Execute commands while caching (memoizing) their output (stdout, stderr, exit code) on subsequent calls 
-for a configurable duration.
+for a configurable duration. 
 
 Command output will be cached for <cacheperiod> seconds and "replayed" for 
 any subsequent calls. Original exit status will also be emulated.
+
+This is a very simple implementation, only suitable for **text** output.
 
 ## Details
 If command is run after cacheperiod has expired, the actual command will be re-executed and a new result 
