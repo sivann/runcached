@@ -1,20 +1,23 @@
 # RunCached
 
-Execute commands while caching (memoizing) their output for subsequent calls. 
+Execute commands while caching (memoizing) their output (stdout, stderr, exit code) on subsequent calls 
+for a configurable duration.
+
 Command output will be cached for <cacheperiod> seconds and "replayed" for 
 any subsequent calls. Original exit status will also be emulated.
 
 ## Details
-After cacheperiod has expired, command will be re-executed and a new result 
+If command is run after cacheperiod has expired, the actual command will be re-executed and a new result 
 will be cached. 
-Cache data is tied to the command and arguments executed and the 
-path of the runcached executable. Cache results are stored in /tmp
+
+Cache data is tied to the **command** and **arguments** executed and the 
+**path** of the executable. Cache results are stored in /tmp
 
 You can use runcached to run resource-expensive commands multiple times, 
-parsing different parts of its output each time. Those commands will be
+parsing different parts of their output each time. Those commands will be
 run only once for each cacheperiod. 
 
-Implementation is provided in 3 languages, python, C, BASH. Of course the BASH version is not really suggested but it works.
+Implementation is not fancy, just works. It is provided in 3 languages, python, C, BASH to suit different environments. The C version just calls external commands (like bash) but performs way better in ultra slow CPUs. The BASH version is not really suggested but it works. The python is probably what you want.
 
 
 ## Usage
@@ -33,10 +36,10 @@ runcached.sh  <command to execute with args>
 ## Examples
 
 
-### Example 1:  Run the date command. Each time it executes prints the same date for 5 seconds.
+### Example 1:  Run the date command. Each time it executes, it displays the same date for 5 seconds at a time.
 runcached.py -c 5 date
 
-### Example 2: Zabbix userparameter which can be called multiple times , but actually executes only once every 20 seconds. 
+### Example 2: Zabbix userparameter which can be called multiple times, but in reality executes only once every 20 seconds. 
 Query multiple parameters of mysql at the same time, without re-running the query.
 
 
