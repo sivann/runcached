@@ -17,7 +17,7 @@ You can use runcached to run resource-expensive commands multiple times,
 parsing different parts of their output each time. Those commands will be
 run only once for each cacheperiod. 
 
-Implementation is not fancy, just works. It is provided in 3 languages, python, C, BASH to suit different environments. The C version just calls external commands (like bash) but performs way better in ultra slow CPUs. The BASH version is not really suggested but it works. The python is probably what you want.
+Implementation is not fancy, just works. It is provided in 3 languages, python, C, BASH to suit different environments. The BASH version is not really suggested but it works. The python is probably what you want.
 
 
 ## Usage
