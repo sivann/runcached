@@ -3,7 +3,7 @@
  * Execute commands while caching their output for subsequent calls. 
  * Command output will be cached for $cacheperiod and replayed for subsequent calls
  *
- * Author Spiros Ioannou sivann <at> inaccess.com
+ * Author Spiros Ioannou sivann <at> gmail.com
  *
  */
 
@@ -18,6 +18,11 @@
 #include <math.h>
 #include <time.h>
 
+#if defined(__APPLE__) || defined(__NetBSD__)
+#define st_atim st_atimespec
+#define st_ctim st_ctimespec
+#define st_mtim st_mtimespec
+#endif
 
 int cacheperiod=27; //seconds
 char cachedir[512];
@@ -29,7 +34,7 @@ char pidfile[128];
 
 char * str2md5str( char[]);
 void cleanup(void);
-int runit(char **,char *,char *,char *,char *);
+void runit(char **,char *,char *,char *,char *);
 int isfile(char *path) ;
 
 int main(int argc, char **argv) {
@@ -139,13 +144,12 @@ int isfile(char *path) {
 
 void cleanup(void) {
     //if ( access( pidfile, F_OK ) != -1 ) {
-	printf("Cleanup\n");
     if (isfile(pidfile)) {
         unlink(pidfile);
     }
 }
 
-int runit(char **argv,char * cmd,char * cmddatafile,char * cmdexitcode,char * cmdfile) {
+void runit(char **argv,char * cmd,char * cmddatafile,char * cmdexitcode,char * cmdfile) {
     int out_old, out_new;
     int err_old, err_new;
     int exitcode;
