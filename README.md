@@ -59,7 +59,6 @@ UserParameter=mysql.globalstatus[*],/usr/local/bin/runcached.py -c 20 /usr/bin/m
 And then define some items like so:
 
 ```
-#!nolang
 Item Name                      Item Key
 --------------                  --------------
 MySQL DELETES	 	mysql.globalstatus[Com_delete]
