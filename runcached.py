@@ -23,6 +23,7 @@ import random
 import atexit
 import syslog
 import tempfile
+import shlex
 
 
 argskip=1
@@ -34,7 +35,7 @@ if sys.argv[1] == '-c':
 	cacheperiod=int(sys.argv[2])
 	argskip=3
 
-cmd=" ".join(sys.argv[argskip:])
+cmd=shlex.join(sys.argv[argskip:])
 
 #hash of executed command w/args
 m = hashlib.md5()
